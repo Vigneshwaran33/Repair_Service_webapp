@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="cont">
+        <h1>SIGNUP</h1>
+        <form action="/signup" method="POST">
+            <div class="input-cont">
+                <label for="uname">Username</label>
+                <input type="text" id="uname" name="uname" required>
+            </div>
+            <div class="input-cont">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-cont">
+                <label for="pwd">Password</label>
+                <input type="password" id="pwd" name="pwd" required>
+            </div>
+            <div class="input-cont">
+                <label for="Address">Address</label>
+                <input type="text" id="add" name="add" required>
+                <div class="spec">Street Address</div>
+                <input type="text" id="city" name="city" required style="width: 8rem;">
+                <div class="spec">City</div>
+            </div>
+            <div class="input-cont">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" required  placeholder="10-digit number">
+            </div>
+            <button type="submit">Signup</button>
+            <div class="switch">Already a Member?<a href="/">Login</a> </div>
+        </form>
+        </div>
+</body>   
+</html>
