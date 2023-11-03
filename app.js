@@ -17,7 +17,7 @@ const userRoutes=require('./routes/userRoutes');
 app.use('/',userRoutes);
 
 require('dotenv').config();
-const db=require('./models/userdb');
+require('./models/userdb');
 
 const port=33;
 app.listen(port,()=>{
