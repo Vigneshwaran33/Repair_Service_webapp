@@ -13,12 +13,23 @@ con.connect((err)=>{
     else console.log('connected to the database');
 });
 
+const createUser=(uname,pwd,email,address,city,phone,callback)=>{
+    const query='INSERT INTO users(uname,pwd,email,address,city,phone_num) VALUES (?,?,?,?,?,?)';
+    con.query(query,[uname,pwd,email,address,city,phone],(err,res)=>{
+        if(err) callback(err,null);
+        else callback(null,res);
+    });
+};
+
+const authenticateUser=(uname,pwd,callback)=>{
+    const query='SELECT * FROM users where uname=? AND pwd=?';
+    con.query(query,[uname,pwd],(err,result)=>{
+        if(err) callback(err,null);
+        else if(result.length===1) callback(null,result[0]);
+        else callback(new Error('Authentication failed'),null);
+    });
+};
+
 module.exports={
-    createUser:(uname,pwd,email,address,city,phone,callback)=>{
-        const query='INSERT INTO users(uname,pwd,email,address,city,phone_num) VALUES (?,?,?,?,?,?)';
-        con.query(query,[uname,pwd,email,address,city,phone],(err,res)=>{
-            if(err) callback(err,null);
-            else callback(null,res);
-        })
-    }
-}
+    createUser,authenticateUser
+};
