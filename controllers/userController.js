@@ -2,8 +2,8 @@ const db=require('../models/userdb');
 
 module.exports ={
        renderLogin:(req,res)=>{
-        const reg=req.query.reg;
-        res.render('index',{reg});
+        const { reg, log } = req.query;
+        res.render('index',{reg,log});
        },
        
        login:(req,res)=>{
@@ -12,7 +12,7 @@ module.exports ={
         db.authenticateUser(uname,pwd,(err,user)=>{
             if(err){
                 console.log(err);
-                res.redirect('/?')
+                res.redirect('/?log=fail')
             }
             else{
                 req.session.user=user;
@@ -26,8 +26,7 @@ module.exports ={
             res.render('home',{user:req.session.user});
         }
         else {
-            const loginfailed=true;
-            res.redirect('/?log=success');
+            res.redirect('/');
         }
        },
 
