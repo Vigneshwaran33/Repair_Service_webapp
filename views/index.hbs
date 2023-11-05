@@ -9,12 +9,10 @@
         {{#if reg}}
         Registration was successful!
         {{/if}}
-
-        {{#unless log}} 
-
-        {{else}}
-        <p>Login failed. Please try again.</p>
-        {{/unless}}
+        
+        {{#if login}}
+        {{login}}
+        {{/if}}
 
         <form action="/login" method="POST">
             <div class="input-cont">
